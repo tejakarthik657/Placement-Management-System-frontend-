@@ -1,2 +1,12 @@
 
 @import "tailwindcss";
+/* src/index.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+  Make sure there are no other rules here that reference image.svg.
+  If you find one, delete it.
+*/
