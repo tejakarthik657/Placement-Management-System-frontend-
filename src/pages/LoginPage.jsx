@@ -1,48 +1,72 @@
-// src/pages/LoginPage.jsx
-
 import React, { useState } from 'react';
-// IMPORT useLocation to read the role state from the previous page
 import { useNavigate, useLocation } from 'react-router-dom';
 
+// A secure place to store the valid credentials for each role.
+// In a real-world app, you would never store passwords like this.
+// This would be handled by a backend server and API calls.
+const validCredentials = {
+  student: { email: 'student@123', password: '5505' },
+  recruiter: { email: 'company@123', password: '6606' },
+  college: { email: 'college@123', password: '7707' },
+};
+
 const LoginPage = () => {
-  const [isLogin, setIsLogin] = useState(true);
   const navigate = useNavigate();
-  const location = useLocation(); // <-- GET the location object which contains the state
+  const location = useLocation();
+  
+  // --- STATE MANAGEMENT ---
+  const [isLogin, setIsLogin] = useState(true);
+  // State for the input fields
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  // State for displaying login errors
+  const [error, setError] = useState('');
 
   // Determine the role from the state passed by the Link component.
-  // The 'from' property corresponds to what we set in `roleState`.
-  // We provide a fallback ('default') in case someone navigates to /login directly.
   const role = location.state?.from || 'default';
 
   const toggleForm = () => {
     setIsLogin(!isLogin);
+    setError(''); // Clear errors when toggling form
   };
 
-  // This handleLogin function is now "smart" and redirects based on the role
+  // --- UPDATED LOGIN HANDLER WITH VALIDATION ---
   const handleLogin = (e) => {
     e.preventDefault();
-    
-    // In a real application, you would verify credentials here.
-    
-    // Use a switch statement to navigate to the correct dashboard.
-    switch (role) {
-      case 'student':
-        console.log('Student login successful, navigating to /jobs...');
-        navigate('/jobs'); // Navigate to the job listings page
-        break;
-      case 'college':
-        console.log('College login successful, navigating to /dashboard...');
-        navigate('/dashboard'); // Navigate to the college dashboard
-        break;
-      case 'recruiter':
-        console.log('Recruiter login successful, navigating to /recruiter/dashboard...');
-        navigate('/recruiter/dashboard'); // <-- THE CRITICAL CHANGE
-        break;
-      default:
-        // If the role is unknown, redirect to the homepage as a safe fallback.
-        console.log('Unknown role, navigating to homepage...');
-        navigate('/');
-        break;
+    setError(''); // Clear previous errors
+
+    // Find the expected credentials for the current role
+    const expectedCreds = validCredentials[role];
+
+    // 1. Check if the role is valid and has credentials defined
+    if (!expectedCreds) {
+      setError('Invalid role. Please go back to the homepage and select a role.');
+      return;
+    }
+
+    // 2. Validate the entered email and password against the expected credentials
+    if (email === expectedCreds.email && password === expectedCreds.password) {
+      // SUCCESS: Credentials match, navigate to the correct dashboard
+      switch (role) {
+        case 'student':
+          console.log('Student login successful, navigating to /jobs...');
+          navigate('/jobs');
+          break;
+        case 'college':
+          console.log('College login successful, navigating to /dashboard...');
+          navigate('/dashboard');
+          break;
+        case 'recruiter':
+          console.log('Recruiter login successful, navigating to /recruiter/dashboard...');
+          navigate('/recruiter/dashboard');
+          break;
+        default:
+          navigate('/');
+          break;
+      }
+    } else {
+      // FAILURE: Credentials do not match, show an error message
+      setError('Invalid email or password. Please try again.');
     }
   };
 
@@ -59,17 +83,28 @@ const LoginPage = () => {
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
         <div className="w-full max-w-md">
           <h2 className="text-3xl font-bold text-gray-800 mb-4">{isLogin ? 'Login' : 'Sign Up'}</h2>
-          <div className="w-full h-20 bg-gray-200 rounded-lg mb-8 animate-pulse"></div>
+          <p className="text-gray-500 mb-6">
+            Logging in as: <span className="font-bold capitalize text-blue-600">{role}</span>
+          </p>
 
-          {/* This form now correctly triggers the "smart" handleLogin function */}
           <form onSubmit={handleLogin}>
+            {/* --- ERROR MESSAGE DISPLAY --- */}
+            {error && (
+              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative mb-4" role="alert">
+                <span className="block sm:inline">{error}</span>
+              </div>
+            )}
+
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email</label>
               <input
                 id="email"
                 type="email"
-                defaultValue="b23cs063@kitsw.ac.in"
+                placeholder="Enter your email"
+                value={email} // Controlled component
+                onChange={(e) => setEmail(e.target.value)} // Update state on change
                 className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
               />
             </div>
             <div className="mb-6">
@@ -77,8 +112,11 @@ const LoginPage = () => {
               <input
                 id="password"
                 type="password"
-                defaultValue="••••••••"
+                placeholder="Enter your password"
+                value={password} // Controlled component
+                onChange={(e) => setPassword(e.target.value)} // Update state on change
                 className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
               />
             </div>
             <div className="flex items-center gap-4 mb-6">
