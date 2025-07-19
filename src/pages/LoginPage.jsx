@@ -35,9 +35,8 @@ const LoginPage = () => {
         navigate('/dashboard'); // Navigate to the college dashboard
         break;
       case 'recruiter':
-        // You can add a recruiter dashboard route later
-        console.log('Recruiter login successful, navigating to a future recruiter page...');
-        navigate('/'); // For now, just go to the homepage
+        console.log('Recruiter login successful, navigating to /recruiter/dashboard...');
+        navigate('/recruiter/dashboard'); // <-- THE CRITICAL CHANGE
         break;
       default:
         // If the role is unknown, redirect to the homepage as a safe fallback.
