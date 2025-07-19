@@ -5,7 +5,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 const validCredentials = {
   student: { email: 'student@123', password: '5505' },
   recruiter: { email: 'company@123', password: '6606' },
-  college: { email: 'college@123', password: '7707' },
+  college: { email: 'collage@123', password: '7707' },
 };
 
 const LoginPage = () => {

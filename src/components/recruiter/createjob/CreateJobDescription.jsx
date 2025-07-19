@@ -3,7 +3,7 @@ import React from 'react';
 // A reusable textarea component
 const FormTextArea = ({ label, name, value, onChange, placeholder, rows = 5 }) => (
   <div className="mb-6">
-    <label htmlFor={name} className="block text-md font-semibold text-gray-700 mb-2">
+    <label htmlFor={name} className="block text-md font-semibold text-white mb-2 drop-shadow">
       {label}
     </label>
     <textarea
@@ -13,7 +13,7 @@ const FormTextArea = ({ label, name, value, onChange, placeholder, rows = 5 }) =
       onChange={onChange}
       placeholder={placeholder}
       rows={rows}
-      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-cyan-100 placeholder:text-cyan-100"
     />
   </div>
 );

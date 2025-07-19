@@ -30,7 +30,7 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen">
+    <div className="min-h-screen">
       <DashboardHeader />
       <main className="container mx-auto p-6 lg:p-8">
         <PageHeader 
@@ -41,7 +41,6 @@ const ProfilePage = () => {
           <ProfileInformationForm profileData={profileData} onChange={handleProfileChange} />
           <ChangePasswordForm passwordData={passwordData} onChange={handlePasswordChange} />
           <DangerZone />
-
           <div className="flex justify-end pt-4">
             <button type="submit" className="bg-slate-800 text-white font-semibold px-6 py-2 rounded-lg hover:bg-slate-700">
               Save All Changes

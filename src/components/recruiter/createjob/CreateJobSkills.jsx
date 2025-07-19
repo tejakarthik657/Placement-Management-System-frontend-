@@ -37,7 +37,7 @@ const CreateJobSkills = ({ formData, handleInputChange, setFormData }) => {
     <div>
       {/* Required Skills Input */}
       <div className="mb-6">
-        <label className="block text-sm font-semibold text-gray-700 mb-1">
+        <label className="block text-sm font-semibold text-white mb-1 drop-shadow">
           Required Skills
         </label>
         <div className="flex flex-wrap items-center gap-2 p-2 border border-gray-300 rounded-lg">
@@ -55,7 +55,7 @@ const CreateJobSkills = ({ formData, handleInputChange, setFormData }) => {
             onChange={(e) => setCurrentSkill(e.target.value)}
             onKeyDown={handleSkillKeyDown}
             placeholder="Type and add skills"
-            className="flex-grow p-1 focus:outline-none"
+            className="flex-grow p-1 focus:outline-none text-cyan-100 placeholder:text-cyan-100"
           />
         </div>
       </div>
@@ -63,7 +63,7 @@ const CreateJobSkills = ({ formData, handleInputChange, setFormData }) => {
       {/* Salary Inputs */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="minSalary" className="block text-sm font-semibold text-gray-700 mb-1">
+          <label htmlFor="minSalary" className="block text-sm font-semibold text-white mb-1 drop-shadow">
             Minimum Salary (₹)
           </label>
           <input
@@ -73,11 +73,11 @@ const CreateJobSkills = ({ formData, handleInputChange, setFormData }) => {
             placeholder="Enter minimum salary"
             value={formData.minSalary}
             onChange={handleInputChange}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-cyan-100 placeholder:text-cyan-100"
           />
         </div>
         <div>
-          <label htmlFor="maxSalary" className="block text-sm font-semibold text-gray-700 mb-1">
+          <label htmlFor="maxSalary" className="block text-sm font-semibold text-white mb-1 drop-shadow">
             Maximum Salary (₹)
           </label>
           <input
@@ -87,7 +87,7 @@ const CreateJobSkills = ({ formData, handleInputChange, setFormData }) => {
             placeholder="Enter maximum salary"
             value={formData.maxSalary}
             onChange={handleInputChange}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-cyan-100 placeholder:text-cyan-100"
           />
         </div>
       </div>

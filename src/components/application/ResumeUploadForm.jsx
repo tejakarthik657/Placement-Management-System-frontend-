@@ -35,7 +35,7 @@ const ResumeUploadForm = ({ onFileChange }) => {
       </div>
       <div className="mt-6 flex items-center">
         <input type="checkbox" id="autofill" className="h-5 w-5 rounded border-slate-300 text-slate-800 focus:ring-slate-500" />
-        <label htmlFor="autofill" className="ml-3 text-sm text-slate-600">Use my resume to auto-fill the form</label>
+        <label htmlFor="autofill" className="ml-3 text-sm text-white drop-shadow">Use my resume to auto-fill the form</label>
       </div>
     </div>
   );
