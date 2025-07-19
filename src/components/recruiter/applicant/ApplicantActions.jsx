@@ -43,7 +43,7 @@ const ApplicantActions = ({ applicantId }) => {
 
   return (
     <div className="mt-8">
-      <h3 className="text-xl font-bold mb-4">Actions</h3>
+      <h3 className="text-xl font-bold text-white drop-shadow mb-4">Actions</h3>
       <div className="space-y-4">
         {/* Schedule Interview Button */}
         <button
@@ -60,11 +60,12 @@ const ApplicantActions = ({ applicantId }) => {
             placeholder="Type a message..."
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="flex-grow p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="flex-grow p-2 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white bg-black/30 placeholder-white placeholder-opacity-80"
+            style={{ color: 'white', WebkitTextFillColor: 'white', caretColor: 'white' }}
           />
           <button
             onClick={handleSendMessage}
-            className="bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded-lg hover:bg-gray-300 transition duration-200"
+            className="bg-white text-black font-semibold py-2 px-4 rounded-lg hover:bg-gray-200 transition duration-200 border border-gray-300"
           >
             Send Message
           </button>

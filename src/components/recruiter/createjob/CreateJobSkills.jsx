@@ -34,13 +34,13 @@ const CreateJobSkills = ({ formData, handleInputChange, setFormData }) => {
   };
 
   return (
-    <div>
+    <div className="p-6 bg-black/30 rounded-lg border border-gray-300 shadow-lg">
       {/* Required Skills Input */}
       <div className="mb-6">
         <label className="block text-sm font-semibold text-white mb-1 drop-shadow">
           Required Skills
         </label>
-        <div className="flex flex-wrap items-center gap-2 p-2 border border-gray-300 rounded-lg">
+        <div className="flex flex-wrap items-center gap-2 p-2 border border-gray-300 rounded-lg bg-black/10">
           {formData.skills.map((skill, index) => (
             <div key={index} className="flex items-center gap-2 bg-gray-200 text-gray-800 text-sm font-medium px-3 py-1 rounded-full">
               <span>{skill}</span>
@@ -55,7 +55,7 @@ const CreateJobSkills = ({ formData, handleInputChange, setFormData }) => {
             onChange={(e) => setCurrentSkill(e.target.value)}
             onKeyDown={handleSkillKeyDown}
             placeholder="Type and add skills"
-            className="flex-grow p-1 focus:outline-none text-cyan-100 placeholder:text-cyan-100"
+            className="flex-grow p-1 focus:outline-none text-cyan-100 placeholder:text-cyan-100 bg-transparent"
           />
         </div>
       </div>
@@ -73,7 +73,7 @@ const CreateJobSkills = ({ formData, handleInputChange, setFormData }) => {
             placeholder="Enter minimum salary"
             value={formData.minSalary}
             onChange={handleInputChange}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-cyan-100 placeholder:text-cyan-100"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-cyan-100 placeholder:text-cyan-100 bg-black/10"
           />
         </div>
         <div>
@@ -87,7 +87,7 @@ const CreateJobSkills = ({ formData, handleInputChange, setFormData }) => {
             placeholder="Enter maximum salary"
             value={formData.maxSalary}
             onChange={handleInputChange}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-cyan-100 placeholder:text-cyan-100"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-cyan-100 placeholder:text-cyan-100 bg-black/10"
           />
         </div>
       </div>
