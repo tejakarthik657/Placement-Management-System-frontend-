@@ -1,7 +1,7 @@
 import FormInput from '../../ui/FormInput'; // Reusing the generic input
 
 const CreateJobCoreDetails = ({ formData, handleInputChange }) => (
-  <>
+  <div className="p-6 bg-black/30 rounded-lg border border-gray-300 shadow-lg">
     <FormInput
       label="Job Title"
       name="jobTitle"
@@ -26,7 +26,7 @@ const CreateJobCoreDetails = ({ formData, handleInputChange }) => (
       value={formData.jobType}
       onChange={handleInputChange}
     />
-  </>
+  </div>
 );
 
 export default CreateJobCoreDetails;

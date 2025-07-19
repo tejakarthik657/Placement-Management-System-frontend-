@@ -22,11 +22,11 @@ const ApplicantDetailsPage = () => {
       <main className="container mx-auto p-6 lg:p-8 max-w-4xl">
         <ApplicantHeader
           name="Sophia Clark"
-          status="Application Review | Interviewing"
+          status={<span className="text-white drop-shadow">Application Review | Interviewing</span>}
           score="85%"
           avatarUrl="https://i.pinimg.com/1200x/cb/88/88/cb8888605eb70bafc1809a8753997388.jpg"
         />
-        <h3 className="text-xl font-bold mt-8 mb-2">Resume</h3>
+        <h3 className="text-xl font-bold text-white drop-shadow mt-8 mb-2">Resume</h3>
         <div className="p-4 border rounded-lg text-center text-gray-500 bg-gray-50 mb-6">
           <p>Resume viewer would be here.</p>
         </div>

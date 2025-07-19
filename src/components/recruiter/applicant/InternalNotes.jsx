@@ -56,30 +56,31 @@ const ratingDistribution = [
 const InternalNotes = () => {
   return (
     <div className="mt-8">
-      <h3 className="text-xl font-bold mb-4">Internal Notes & Feedback</h3>
+      <h3 className="text-xl font-bold text-white drop-shadow mb-4">Internal Notes & Feedback</h3>
 
       {/* Add New Note Textarea */}
       <textarea
-        className="w-full p-3 border border-gray-300 rounded-lg mb-6 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full p-3 border border-gray-300 rounded-lg mb-6 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white bg-black/30 placeholder-white placeholder-opacity-80"
+        style={{ color: 'white', WebkitTextFillColor: 'white', caretColor: 'white' }}
         rows="3"
-        placeholder="Add a new note or feedback..."
+        placeholder="Send a message..."
       ></textarea>
 
       {/* Ratings Summary */}
       <div className="flex flex-col md:flex-row gap-8 mb-8">
         <div className="flex-shrink-0 text-center md:text-left">
-          <p className="text-5xl font-bold">4.5</p>
+          <p className="text-5xl font-bold text-white drop-shadow">4.5</p>
           <StarRating rating={4} /> 
           <p className="text-gray-500 mt-1">2 reviews</p>
         </div>
         <div className="w-full">
           {ratingDistribution.map(item => (
             <div key={item.stars} className="flex items-center gap-2 mb-1">
-              <span className="text-sm font-medium text-gray-600">{item.stars}</span>
+              <span className="text-sm font-medium text-white drop-shadow">{item.stars}</span>
               <div className="w-full bg-gray-200 rounded-full h-2.5">
                 <div className="bg-yellow-400 h-2.5 rounded-full" style={{ width: item.percentage }}></div>
               </div>
-              <span className="text-sm font-medium text-gray-600 w-10 text-right">{item.percentage}</span>
+              <span className="text-sm font-medium text-white drop-shadow w-10 text-right">{item.percentage}</span>
             </div>
           ))}
         </div>
@@ -93,18 +94,18 @@ const InternalNotes = () => {
             <div className="flex-1">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="font-semibold">{review.name}</p>
+                  <p className="font-semibold text-white drop-shadow">{review.name}</p>
                   <p className="text-sm text-gray-500">{review.date}</p>
                 </div>
                 <StarRating rating={review.rating} />
               </div>
-              <p className="mt-2 text-gray-700">{review.text}</p>
-              <div className="flex items-center space-x-4 mt-2 text-gray-500">
-                <button className="flex items-center space-x-1 hover:text-blue-600">
+              <p className="mt-2 text-white drop-shadow">{review.text}</p>
+              <div className="flex items-center space-x-4 mt-2 text-white drop-shadow">
+                <button className="flex items-center space-x-1 text-white drop-shadow hover:text-blue-600">
                   <ThumbsUpIcon />
                   <span>{review.likes}</span>
                 </button>
-                <button className="flex items-center space-x-1 hover:text-red-600">
+                <button className="flex items-center space-x-1 text-white drop-shadow hover:text-red-600">
                   <ThumbsDownIcon />
                 </button>
               </div>

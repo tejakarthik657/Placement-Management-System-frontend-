@@ -53,7 +53,7 @@ const DashboardHeader = () => {
             {isDropdownOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-slate-200">
                 <div className="px-4 py-2">
-                  <p className="text-sm font-semibold text-slate-800">Sophia Clark</p>
+                  <p className="text-sm font-semibold text-white drop-shadow">Sophia Clark</p>
                   <p className="text-xs text-slate-500">Recruiter</p>
                 </div>
                 <div className="border-t border-slate-200"></div>
