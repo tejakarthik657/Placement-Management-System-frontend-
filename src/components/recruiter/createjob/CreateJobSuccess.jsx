@@ -17,10 +17,10 @@ const CreateJobSuccess = ({ onGoToDashboard }) => {
       </div>
 
       {/* Text content */}
-      <h2 className="text-3xl font-bold text-gray-800 mt-8">
+      <h2 className="text-3xl font-bold text-white mt-8 drop-shadow-lg">
         Thank You!
       </h2>
-      <p className="text-gray-600 mt-2 max-w-sm">
+      <p className="text-cyan-200 mt-2 max-w-sm drop-shadow">
         Your application has been received. We will be in touch regarding the next steps.
       </p>
 

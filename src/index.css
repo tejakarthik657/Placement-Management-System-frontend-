@@ -6,7 +6,31 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 
-  Make sure there are no other rules here that reference image.svg.
-  If you find one, delete it.
-*/
+/* --- Parallax animations for the login form background shapes --- */
+@keyframes floatShape1 {
+  from { transform: translateY(0) translateX(0); }
+  to { transform: translateY(-20px) translateX(5px); }
+}
+
+@keyframes floatShape2 {
+  from { transform: translateY(0) translateX(0); }
+  to { transform: translateY(10px) translateX(-10px); }
+}
+
+@keyframes floatShape3 {
+  from { transform: translateY(0) translateX(0); }
+  to { transform: translateY(-5px) translateX(15px); }
+}
+
+/* --- Helper classes to apply these animations --- */
+.animate-shape-1 {
+  animation: floatShape1 20s infinite alternate ease-in-out;
+}
+
+.animate-shape-2 {
+  animation: floatShape2 30s infinite alternate ease-in-out;
+}
+
+.animate-shape-3 {
+  animation: floatShape3 25s infinite alternate ease-in-out;
+}

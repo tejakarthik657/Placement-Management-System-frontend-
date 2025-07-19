@@ -17,16 +17,14 @@ const MOCK_JOBS = [
 
 const JobListingPage = () => {
   return (
-    <div className="bg-white min-h-screen">
+    <div className="container mx-auto max-w-4xl py-10">
       <DashboardHeader />
-
       <main className="container mx-auto p-6 lg:p-8">
         {/* Page Title */}
         <div className="mb-6">
-          <h2 className="text-3xl font-bold text-slate-900">Job Listings</h2>
-          <p className="text-slate-500 mt-1">Explore opportunities that match your profile and career aspirations.</p>
+          <h2 className="text-3xl font-bold text-white drop-shadow-lg">Job Listings</h2>
+          <p className="text-cyan-200 mt-1 drop-shadow">Explore opportunities that match your profile and career aspirations.</p>
         </div>
-
         {/* Search Bar */}
         <div className="relative">
           <MagnifyingGlassIcon className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
@@ -36,42 +34,27 @@ const JobListingPage = () => {
             className="w-full bg-slate-100 border-transparent rounded-lg py-3 pl-12 pr-4 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
           />
         </div>
-
         {/* Filters */}
         <JobFilters />
-
-       
-
-<div className="mt-6 space-y-2">
-  {MOCK_JOBS.map((job) => (
-    <JobListItem
-      key={job.id}
-      id={job.id} // <-- Pass the job ID here
-      title={job.title}
-      company={job.company}
-      location={job.location}
-      logoUrl={job.logoUrl}
-    />
-  ))}
-</div>
-// ...
-
         {/* Job List */}
         <div className="mt-6 space-y-2">
           {MOCK_JOBS.map((job) => (
             <JobListItem
               key={job.id}
-              title={job.title}
-              company={job.company}
-              location={job.location}
+              id={job.id}
+              title={<span className="text-white font-semibold drop-shadow-lg">{job.title}</span>}
+              company={<span className="text-cyan-100 font-medium drop-shadow">{job.company}</span>}
+              location={<span className="text-cyan-200 font-medium drop-shadow">{job.location}</span>}
               logoUrl={job.logoUrl}
             />
           ))}
         </div>
-        
         {/* Pagination */}
-        <Pagination />
-
+        <div className="mt-8 flex justify-center">
+          <div className="bg-white/80 rounded-xl px-6 py-3 shadow-lg backdrop-blur-md">
+            <Pagination />
+          </div>
+        </div>
       </main>
     </div>
   );

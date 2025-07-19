@@ -17,7 +17,7 @@ const ApplicantDetailsPage = () => {
   // const { data: applicant, isLoading } = useApplicant(applicantId);
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="min-h-screen">
       <DashboardHeader />
       <main className="container mx-auto p-6 lg:p-8 max-w-4xl">
         <ApplicantHeader
@@ -30,13 +30,10 @@ const ApplicantDetailsPage = () => {
         <div className="p-4 border rounded-lg text-center text-gray-500 bg-gray-50 mb-6">
           <p>Resume viewer would be here.</p>
         </div>
-        
         <ApplicationDetails />
-
         <InternalNotes />
         {/* Pass the applicantId to the Actions component */}
         <ApplicantActions applicantId={applicantId} />
-        
       </main>
     </div>
   );

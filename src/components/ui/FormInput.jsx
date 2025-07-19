@@ -1,6 +1,6 @@
 const FormInput = ({ label, name, type, placeholder, value, onChange }) => (
   <div className="mb-6">
-    <label htmlFor={name} className="block text-sm font-semibold text-slate-700 mb-1">
+    <label htmlFor={name} className="block text-sm font-semibold text-white mb-1 drop-shadow">
       {label}
     </label>
     <input
@@ -10,7 +10,7 @@ const FormInput = ({ label, name, type, placeholder, value, onChange }) => (
       placeholder={placeholder}
       value={value}
       onChange={onChange}
-      className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+      className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition placeholder:text-cyan-100 text-cyan-100"
       required
     />
   </div>
