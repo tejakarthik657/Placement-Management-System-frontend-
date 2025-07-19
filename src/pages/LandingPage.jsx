@@ -1,4 +1,3 @@
-// src/pages/LandingPage.jsx
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { AcademicCapIcon, BriefcaseIcon, BuildingLibraryIcon } from '@heroicons/react/24/outline';
@@ -31,6 +30,21 @@ const Tooltip = ({ children, text }) => (
   </div>
 );
 
+// --- MODIFIED RoleCard component ---
+// It now accepts `to` and `roleState` props to enable smart navigation
+const RoleCard = ({ icon, title, description, to, roleState }) => (
+  <Link 
+    to={to} 
+    state={roleState} // Pass the role information to the next route
+    className="block p-8 bg-gray-50 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-gray-200"
+  >
+    <div className="flex justify-center mb-4">{icon}</div>
+    <h4 className="text-2xl font-bold mb-2">{title}</h4>
+    <p className="text-gray-600">{description}</p>
+  </Link>
+);
+
+
 const LandingPage = () => {
   const [modalContent, setModalContent] = useState({ isOpen: false, title: '', content: '' });
   const rolesRef = useRef(null);
@@ -62,29 +76,21 @@ const LandingPage = () => {
       </Modal>
 
      {/* Header */}
-<header className="fixed top-0 left-0 right-0 bg-slate-600 shadow-md z-40">
-  <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-    
-    {/* Left Side: Logo and Title */}
-    <div className="flex items-center gap-2">
-      {/* Use a light color for the SVG icon */}
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" className="h-6 w-6 fill-slate-200" aria-hidden="true">
-          <path fillRule="evenodd" clipRule="evenodd" d="M16 8L20 4V0H0V4L4 8H16ZM4 12L0 16V20H20V16L16 12H4Z"/>
-      </svg>
-      {/* Change text color to white for readability */}
-      <h1 className="text-xl font-bold text-white">CampusConnect</h1>
-    </div>
-
-    {/* Right Side: Navigation */}
-    <nav className="space-x-8">
-      {/* Change link and button text to a light color */}
-      <a href="#" className="text-slate-200 hover:text-white transition-colors">Home</a>
-      <button onClick={() => openModal('About Us', aboutContent)} className="text-slate-200 hover:text-white transition-colors">About</button>
-      <button onClick={() => openModal('Contact Us', contactContent)} className="text-slate-200 hover:text-white transition-colors">Contact</button>
-    </nav>
-
-  </div>
-</header>
+    <header className="fixed top-0 left-0 right-0 bg-slate-600 shadow-md z-40">
+      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" className="h-6 w-6 fill-slate-200" aria-hidden="true">
+              <path fillRule="evenodd" clipRule="evenodd" d="M16 8L20 4V0H0V4L4 8H16ZM4 12L0 16V20H20V16L16 12H4Z"/>
+          </svg>
+          <h1 className="text-xl font-bold text-white">CampusConnect</h1>
+        </div>
+        <nav className="space-x-8">
+          <a href="#" className="text-slate-200 hover:text-white transition-colors">Home</a>
+          <button onClick={() => openModal('About Us', aboutContent)} className="text-slate-200 hover:text-white transition-colors">About</button>
+          <button onClick={() => openModal('Contact Us', contactContent)} className="text-slate-200 hover:text-white transition-colors">Contact</button>
+        </nav>
+      </div>
+    </header>
 
       {/* Hero Section */}
       <main className="pt-16">
@@ -109,11 +115,30 @@ const LandingPage = () => {
             <p className="text-gray-600 max-w-3xl mx-auto mb-12">
               Select the role that best describes you to access the features and resources tailored to your needs.
             </p>
+            {/* --- MODIFIED RoleCard Usage --- */}
+            {/* Each card now sends its specific role to the login page */}
             <div className="grid md:grid-cols-3 gap-8">
-              {/* Role Cards */}
-              <RoleCard icon={<AcademicCapIcon className="h-8 w-8 text-gray-700"/>} title="Student" description="Find your dream job and connect with top companies."/>
-              <RoleCard icon={<BriefcaseIcon className="h-8 w-8 text-gray-700"/>} title="Recruiter" description="Discover talented students and streamline your hiring process."/>
-              <RoleCard icon={<BuildingLibraryIcon className="h-8 w-8 text-gray-700"/>} title="College" description="Manage placements efficiently and connect with leading recruiters."/>
+              <RoleCard 
+                to="/login"
+                roleState={{ from: 'student' }}
+                icon={<AcademicCapIcon className="h-8 w-8 text-gray-700"/>} 
+                title="Student" 
+                description="Find your dream job and connect with top companies."
+              />
+              <RoleCard 
+                to="/login"
+                roleState={{ from: 'recruiter' }}
+                icon={<BriefcaseIcon className="h-8 w-8 text-gray-700"/>} 
+                title="Recruiter" 
+                description="Discover talented students and streamline your hiring process."
+              />
+              <RoleCard 
+                to="/login"
+                roleState={{ from: 'college' }}
+                icon={<BuildingLibraryIcon className="h-8 w-8 text-gray-700"/>} 
+                title="College" 
+                description="Manage placements efficiently and connect with leading recruiters."
+              />
             </div>
           </div>
         </section>
@@ -133,14 +158,5 @@ const LandingPage = () => {
     </div>
   );
 };
-
-// Helper component for role cards
-const RoleCard = ({ icon, title, description }) => (
-  <Link to="/login" className="block p-8 bg-gray-50 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-gray-200">
-    <div className="flex justify-center mb-4">{icon}</div>
-    <h4 className="text-2xl font-bold mb-2">{title}</h4>
-    <p className="text-gray-600">{description}</p>
-  </Link>
-);
 
 export default LandingPage;

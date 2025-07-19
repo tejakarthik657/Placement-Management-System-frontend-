@@ -21,7 +21,7 @@ const DashboardHeader = () => (
         </div>
         <img
           className="h-9 w-9 rounded-full object-cover"
-          src="https://i.imgur.com/n42n32R.png"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmAGa1z3fdQIqSpGNmYH48-4bjXlOYNCFB4w&s"
           alt="User profile"
         />
       </div>
